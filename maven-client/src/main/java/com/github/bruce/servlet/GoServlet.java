@@ -1,5 +1,7 @@
 package com.github.bruce.servlet;
 
+import com.github.bruce.service.impl.MyServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +16,10 @@ import java.io.IOException;
  *
  * @author yandajun.
  */
-public class TestServlet extends HttpServlet {
+public class GoServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(req.getRequestURL());
+        MyServiceImpl service = new MyServiceImpl();
+        service.go();
     }
 }

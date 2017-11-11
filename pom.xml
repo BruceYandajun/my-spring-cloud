@@ -2,10 +2,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.bruce</groupId>
-  <artifactId>hello</artifactId>
-  <packaging>war</packaging>
+  <artifactId>maven-parent</artifactId>
+  <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
-  <name>hello Maven Webapp</name>
+  <modules>
+    <module>maven-client</module>
+    <module>maven-server</module>
+  </modules>
+  <name>maven-prent</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -21,7 +25,4 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
-  <build>
-    <finalName>hello</finalName>
-  </build>
 </project>
