@@ -2,14 +2,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.bruce</groupId>
-  <artifactId>maven-parent</artifactId>
+  <artifactId>my-springcloud</artifactId>
   <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
   <modules>
-    <module>maven-client</module>
-    <module>maven-server</module>
+    <module>my-springcloud-client</module>
+    <module>my-springcloud-server</module>
   </modules>
-  <name>maven-prent</name>
+  <name>my-springcloud</name>
   <url>http://maven.apache.org</url>
 
   <parent>
