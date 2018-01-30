@@ -1,9 +1,10 @@
-This is a maven multiple modules test project.
+This is a spring cloud project with multiple modules .
 
 Project construct :
 
-    maven-parent
-      --maven-server
-      --maven-client
+    my-springcloud
+      --my-springcloud-register
+      --my-springcloud-server
+      --my-springcloud-client
 
 
