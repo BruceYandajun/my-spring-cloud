@@ -1,6 +1,9 @@
 package com.github.bruce.service.impl;
 
 import com.github.bruce.service.IMyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 /**
  * Description
@@ -10,9 +13,13 @@ import com.github.bruce.service.IMyService;
  *
  * @author yandajun.
  */
+@Service
 public class MyServiceImpl implements IMyService {
 
-    public void go() {
-        System.out.println("go");
+    Logger logger = LoggerFactory.getLogger(MyServiceImpl.class);
+
+    public String go() {
+        logger.info("enter go method");
+        return "go";
     }
 }

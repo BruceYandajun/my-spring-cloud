@@ -9,5 +9,5 @@ package com.github.bruce.service;
  * @author yandajun.
  */
 public interface IMyService {
-    void go();
+    String go();
 }
