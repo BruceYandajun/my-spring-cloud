@@ -21,6 +21,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -29,7 +37,24 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <!-- mainClass是为了支持jar包启动main方法 -->
                     <mainClass>com.github.bruce.ApplicationClient</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!-- 重新打包时触发上面的插件 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <!--如果想在没有web.xml文件的情况下构建WAR，请设置为false。-->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>

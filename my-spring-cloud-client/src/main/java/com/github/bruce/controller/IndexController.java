@@ -1,6 +1,6 @@
 package com.github.bruce.controller;
 
-import com.github.bruce.service.IMyService;
+import com.github.bruce.service.impl.MyServiceImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 public class IndexController {
 
     @Resource
-    private IMyService myService;
+    private MyServiceImpl myService;
 
     @RequestMapping("/")
     public String welcome(){

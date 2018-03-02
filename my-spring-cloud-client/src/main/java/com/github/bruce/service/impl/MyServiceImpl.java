@@ -1,6 +1,5 @@
 package com.github.bruce.service.impl;
 
-import com.github.bruce.service.IMyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,8 @@ import org.springframework.stereotype.Service;
  * @author yandajun.
  */
 @Service
-public class MyServiceImpl implements IMyService {
+//public class MyServiceImpl implements IMyService {
+public class MyServiceImpl {
 
     Logger logger = LoggerFactory.getLogger(MyServiceImpl.class);
 

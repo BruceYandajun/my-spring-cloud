@@ -19,4 +19,25 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- mainClass是为了支持jar包启动main方法 -->
+                    <mainClass>com.github.bruce.ApplicationRegister</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!-- 重新打包时触发上面的插件 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
