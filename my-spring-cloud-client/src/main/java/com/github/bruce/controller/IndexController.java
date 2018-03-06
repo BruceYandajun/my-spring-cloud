@@ -1,10 +1,7 @@
 package com.github.bruce.controller;
 
-import com.github.bruce.service.impl.MyServiceImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * Description
@@ -17,16 +14,9 @@ import javax.annotation.Resource;
 @RestController
 public class IndexController {
 
-    @Resource
-    private MyServiceImpl myService;
-
     @RequestMapping("/")
-    public String welcome(){
+    public String welcome() {
         return "Welcome to my-spring-cloud-client !";
     }
 
-    @RequestMapping("/go")
-    public String go() {
-       return myService.go();
-    }
 }

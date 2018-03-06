@@ -13,6 +13,7 @@ public class ConsumerController {
 
     @RequestMapping("/consumer")
     public String helloConsumer() {
+        // 调用服务端的hello-service
         return restTemplate.getForEntity("http://hello-service/hello", String.class).getBody();
     }
 }

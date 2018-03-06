@@ -15,7 +15,6 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <my.spring.cloud.version>1.0.0-SNAPSHOT</my.spring.cloud.version>
   </properties>
 
   <dependencyManagement>
@@ -23,17 +22,17 @@
       <dependency>
         <groupId>com.github.bruce</groupId>
         <artifactId>my-spring-cloud-client</artifactId>
-        <version>${my.spring.cloud.version}</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.github.bruce</groupId>
         <artifactId>my-spring-cloud-server</artifactId>
-        <version>${my.spring.cloud.version}</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.github.bruce</groupId>
         <artifactId>my-spring-cloud-register</artifactId>
-        <version>${my.spring.cloud.version}</version>
+        <version>${project.version}</version>
       </dependency>
       <!-- 继承父类项目，import可以实现多继承 -->
       <dependency>
