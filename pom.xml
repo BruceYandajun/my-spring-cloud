@@ -10,6 +10,7 @@
     <module>my-spring-cloud-client</module>
     <module>my-spring-cloud-server</module>
     <module>my-spring-cloud-register</module>
+    <module>my-spring-cloud-gw</module>
   </modules>
   <name>my-spring-cloud</name>
 

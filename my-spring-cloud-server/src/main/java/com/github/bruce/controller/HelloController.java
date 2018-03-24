@@ -3,6 +3,7 @@ package com.github.bruce.controller;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -34,5 +35,10 @@ public class HelloController {
         System.out.println("name:" + name);
         Thread.sleep(new Random().nextInt(3000));
         return "hello-world";
+    }
+
+    @RequestMapping("/feign")
+    public String feign(@RequestParam String name) {
+        return name;
     }
 }

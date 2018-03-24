@@ -1,4 +1,4 @@
-package com.github.bruce.service.impl;
+package com.github.bruce.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
