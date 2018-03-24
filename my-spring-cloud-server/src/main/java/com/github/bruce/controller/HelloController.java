@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Description
@@ -23,13 +24,15 @@ public class HelloController {
     private DiscoveryClient discoveryClient;
 
     @RequestMapping("/hello")
-    public String index() {
+    public String index(String name) throws InterruptedException {
         List<String> services = discoveryClient.getServices();
         services.stream().forEach(System.out::println);
         List<ServiceInstance> instances = discoveryClient.getInstances("hello-service");
         instances.stream().forEach(instance ->
             System.out.println(instance.getHost() + ":" + instance.getPort() + "->" + instance.getUri())
         );
+        System.out.println("name:" + name);
+        Thread.sleep(new Random().nextInt(3000));
         return "hello-world";
     }
 }
