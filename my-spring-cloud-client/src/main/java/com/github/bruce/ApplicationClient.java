@@ -5,6 +5,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringCloudApplication
 @EnableFeignClients
+@EnableHystrixDashboard
 public class ApplicationClient extends SpringBootServletInitializer {
 
     @Bean
