@@ -1,6 +1,7 @@
 package com.github.bruce.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,8 @@ public class HelloService {
 
     private String helloServiceUrl = "http://hello-service/hello";
 
-    @HystrixCommand(fallbackMethod = "helloFallback")
+    @HystrixCommand(fallbackMethod = "helloFallback",
+            commandProperties = { @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")})
     public String helloService() {
         long start = System.currentTimeMillis();
         String result = restTemplate.getForEntity(helloServiceUrl, String.class).getBody();

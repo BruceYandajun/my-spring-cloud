@@ -11,6 +11,7 @@
     <module>my-spring-cloud-server</module>
     <module>my-spring-cloud-register</module>
     <module>my-spring-cloud-gw</module>
+    <module>my-spring-cloud-dashboard</module>
   </modules>
   <name>my-spring-cloud</name>
 
@@ -46,7 +47,7 @@
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Dalston.SR1</version>
+        <version>Edgware.SR3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
