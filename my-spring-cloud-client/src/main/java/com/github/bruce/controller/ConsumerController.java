@@ -2,22 +2,22 @@ package com.github.bruce.controller;
 
 import com.github.bruce.service.ClientFeignService;
 import com.github.bruce.service.HelloService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.concurrent.ExecutionException;
 
 @RestController
 public class ConsumerController {
 
-    @Autowired
-    HelloService helloService;
+    @Resource
+    private HelloService helloService;
 
-    @Autowired
-    ClientFeignService feignService;
+    @Resource
+    private ClientFeignService feignService;
 
     @RequestMapping("/consumer")
     public String helloConsumer() {
