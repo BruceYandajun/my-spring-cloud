@@ -3,9 +3,7 @@ package com.github.bruce.controller;
 import com.github.bruce.rpc.BookFeign;
 import com.github.bruce.rpc.User;
 import com.github.bruce.rpc.UserFeign;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -24,9 +22,9 @@ public class FeignController {
         return userFeign.getUserName(id);
     }
 
-    @RequestMapping("/getUserId")
-    public Object getUserId() {
-        return userFeign.getUserId();
+    @GetMapping("/getUserId")
+    public Object getUserId(@RequestParam("id") Integer id, @RequestParam("name") String name) {
+        return userFeign.getUserId(id, name);
     }
 
     @RequestMapping("/updateUser")

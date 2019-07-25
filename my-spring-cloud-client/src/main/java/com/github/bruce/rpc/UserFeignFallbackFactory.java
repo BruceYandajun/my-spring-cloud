@@ -30,9 +30,9 @@ public class UserFeignFallbackFactory implements FallbackFactory<UserFeign>, Use
     }
 
     @Override
-    public Integer getUserId () {
+    public ApiResult<Integer> getUserId (Integer id, String name) {
         log.error("Fallback getUserId :", cause);
-        return 0;
+        return ApiResult.getApiResult(0);
     }
 
     @Override
