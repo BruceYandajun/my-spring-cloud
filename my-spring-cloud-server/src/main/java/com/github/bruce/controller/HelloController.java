@@ -32,7 +32,7 @@ public class HelloController {
         instances.stream().forEach(instance ->
             System.out.println(instance.getHost() + ":" + instance.getPort() + "->" + instance.getUri())
         );
-        System.out.println("name:" + name);
+        System.out.println("parameter name:" + name);
         Thread.sleep(new Random().nextInt(3000));
         return "hello-world";
     }
