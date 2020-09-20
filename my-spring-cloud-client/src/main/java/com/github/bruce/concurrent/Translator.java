@@ -1,4 +1,4 @@
-package com.github.bruce.algorithm;
+package com.github.bruce.concurrent;
 
 import java.util.Random;
 import java.util.concurrent.*;
