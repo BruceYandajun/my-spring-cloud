@@ -33,6 +33,6 @@ public class Fibonacci {
             current = first + second;
 
        }
-       return 0;
+       return current;
     }
 }
