@@ -1,7 +1,5 @@
 package com.github.bruce.algorithm.search;
 
-import java.util.Arrays;
-
 /**
  * 二分查找
  * 时间复杂度：logn
