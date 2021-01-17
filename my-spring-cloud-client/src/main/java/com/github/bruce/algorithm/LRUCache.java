@@ -1,37 +1,86 @@
 package com.github.bruce.algorithm;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
-public class LRUCache extends LinkedHashMap<Integer, Integer> {
+public class LRUCache {
+    class DLinkNode {
+        int key;
+        int value;
+        DLinkNode next;
+        DLinkNode prev;
+        public DLinkNode() {
 
-    private int capacity;
+        }
+        public DLinkNode(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+    DLinkNode head;
+    DLinkNode tail;
+
+    int size;
+    int capacity;
+
+    Map<Integer, DLinkNode> map;
 
     public LRUCache(int capacity) {
-        super(capacity, 0.75f, true);
         this.capacity = capacity;
+        head = new DLinkNode();
+        tail = new DLinkNode();
+        head.next = tail;
+        tail.prev = head;
+        map = new HashMap<>();
     }
 
     public int get(int key) {
-        return super.getOrDefault(key, -1);
+        DLinkNode node = map.get(key);
+        if (node == null) {
+            return -1;
+        }
+        moveToHead(node);
+        return node.value;
     }
 
     public void put(int key, int value) {
-        super.put(key, value);
+        DLinkNode node = map.get(key);
+        if (node != null) {
+            node.value = value;
+            moveToHead(node);
+            return;
+        }
+        node = new DLinkNode(key, value);
+        addToHead(node);
+        size ++;
+        map.put(key, node);
+        if (size > capacity) {
+            DLinkNode last = removeTail();
+            map.remove(last.key);
+            size --;
+        }
     }
 
-    @Override
-    public boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
-        return size() > capacity;
+    private void moveToHead(DLinkNode node) {
+        removeNode(node);
+        addToHead(node);
     }
 
-    public static void main(String[] args) {
-        LRUCache cache = new LRUCache(2);
-        cache.put(1, 1);
-        cache.put(2, 2);
-        System.out.println(cache.get(1));
-        System.out.println(cache);
-        cache.put(3, 3);
-        System.out.println(cache);
+    private void addToHead(DLinkNode node) {
+        node.next = head.next;
+        node.prev = head;
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    private void removeNode(DLinkNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    private DLinkNode removeTail() {
+        DLinkNode last = tail.prev;
+        removeNode(last);
+        return last;
     }
 }
