@@ -1,23 +1,29 @@
 package com.github.bruce.concurrent.pools;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 
 public class CompletableFutureTranslator {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        System.out.println("Completed " + new CompletableFutureTranslator().translate2("abc"));
+        System.out.println("Completed " + new CompletableFutureTranslator().translate1("abc"));
     }
 
     // todo
     public String translate1(String content) throws InterruptedException, ExecutionException {
         ExecutorService executor = Executors.newCachedThreadPool();
         ExecutorCompletionService<String> executorCompletionService = new ExecutorCompletionService<>(executor);
-        executorCompletionService.submit(() -> baidu(content));
-        executorCompletionService.submit(() -> google(content));
-        executorCompletionService.submit(() -> youdao(content));
+        List<Future<String>> futures = new ArrayList<>();
+        Future<String> future1 = executorCompletionService.submit(() -> baidu(content));
+        futures.add(future1);
+        Future<String> future2 = executorCompletionService.submit(() -> google(content));
+        futures.add(future2);
+        Future<String> future3 = executorCompletionService.submit(() -> youdao(content));
+        futures.add(future3);
         String result = executorCompletionService.take().get();
-        executor.shutdown();
+        futures.forEach(f -> f.cancel(true));
         return result;
     }
 
@@ -28,7 +34,7 @@ public class CompletableFutureTranslator {
         CompletableFuture<String> youdao = CompletableFuture.supplyAsync(() -> youdao(content), executor);
         CompletableFuture<Object> result = CompletableFuture.anyOf(baidu, google, youdao);
         String result1 = (String) result.get();
-        executor.shutdown();
+        executor.shutdownNow();
         return result1;
     }
 
