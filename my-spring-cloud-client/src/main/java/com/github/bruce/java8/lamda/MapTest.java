@@ -1,5 +1,7 @@
 package com.github.bruce.java8.lamda;
 
+import com.google.common.collect.Lists;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -64,5 +66,12 @@ public class MapTest {
         Object l = list.stream().collect(Collectors.groupingBy(o -> o.get("lesson"), Collectors.maxBy(Comparator.comparingInt(o -> Integer.valueOf(o.get("version").toString())))));
         System.out.println(l);
 
+        List<List<String>> result = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        map.put("1", Arrays.asList("a", "b"));
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+            result.add(entry.getValue());
+        }
+        System.out.println(result);
     }
 }
