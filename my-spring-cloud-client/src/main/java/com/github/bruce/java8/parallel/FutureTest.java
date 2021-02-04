@@ -9,13 +9,16 @@ public class FutureTest {
         ExecutorService executor = Executors.newCachedThreadPool();
         Future<Double> future = executor.submit(() -> {
             Thread.sleep(2000);
+            System.out.println("execute");
             return 1.0;
         });
 
-        Thread.sleep(1000);
+        Thread.sleep(6000);
 
-        Double result = future.get(1000, TimeUnit.SECONDS);
+        System.out.println("Future get");
+        Double result = future.get(10000, TimeUnit.MILLISECONDS);
 
         line(result);
+        executor.shutdown();
     }
 }
