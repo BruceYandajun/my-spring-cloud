@@ -26,7 +26,7 @@ public class MapTest {
         System.out.println("total:" + total);
         // 使用lambda表达式,reduce
         costBeforeTax.stream().map(cost -> cost + .12 * cost).forEach(System.out::println);
-        total = costBeforeTax.stream().map((cost) -> cost + .12 * cost).reduce((sum, cost) -> sum + cost).get();
+        total = costBeforeTax.stream().map((cost) -> cost + .12 * cost).reduce(Double::sum).get();
         System.out.println("total:" + total);
 
         // collect
