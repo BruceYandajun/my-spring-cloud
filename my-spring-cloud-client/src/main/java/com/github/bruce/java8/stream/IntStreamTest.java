@@ -9,9 +9,9 @@ import static java.util.stream.Collectors.joining;
 
 public class IntStreamTest {
     public static void main(String[] args) {
-        List<Integer> list = IntStream.range(0, 10).mapToObj(Integer::valueOf).collect(Collectors.toList());
+        List<Integer> list = IntStream.range(0, 10).boxed().collect(Collectors.toList());
         line(list);
-        String s = IntStream.rangeClosed(0, 10).boxed().map(i -> i.toString()).collect(joining(", "));
+        String s = IntStream.rangeClosed(0, 10).boxed().map(Object::toString).collect(joining(", "));
         line(s);
     }
 }
