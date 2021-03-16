@@ -1,4 +1,4 @@
-package com.github.bruce;
+package com.github.bruce.algorithm;
 
 import java.util.Arrays;
 import java.util.LinkedList;
