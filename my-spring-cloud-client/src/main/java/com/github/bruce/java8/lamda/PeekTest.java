@@ -12,7 +12,7 @@ public class PeekTest {
     public static void main(String[] args) {
         Stream<String> stream = Stream.of("Java", "Scala", "C++", "Haskell", "Lisp");
         List<String> containsA = Lists.newArrayList();
-        List<String> languages = stream.filter(s -> s.contains("a")).peek(s -> containsA.add(s)).map(s -> s.toUpperCase()).collect(Collectors.toList());
+        List<String> languages = stream.filter(s -> s.contains("a")).peek(containsA::add).map(String::toUpperCase).collect(Collectors.toList());
         line(languages);
         line(containsA);
     }
