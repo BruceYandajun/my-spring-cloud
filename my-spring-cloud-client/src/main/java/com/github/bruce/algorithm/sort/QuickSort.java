@@ -14,19 +14,20 @@ public class QuickSort {
         System.out.println(Arrays.toString(nums));
     }
 
-    private static void quickSort(int[] array, int begin, int end) {
+    private static void quickSort(int[] a, int begin, int end) {
         if (begin >= end) {
             return;
         }
-        int pivot = partition(array, begin, end);
-        quickSort(array, begin, pivot - 1);
-        quickSort(array, pivot + 1, end);
+        int pivot = partition(a, begin, end);
+        quickSort(a, pivot + 1, end);
+        quickSort(a, begin, pivot - 1);
     }
+
     private static int partition(int[] a, int begin, int end) {
         int counter = begin;
         for (int i = begin; i < end; i ++) {
             if (a[i] < a[end]) {
-                Sorts.swap(a, counter, i);
+                Sorts.swap(a, i, counter);
                 counter ++;
             }
         }
