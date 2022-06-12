@@ -19,13 +19,13 @@ public class CollectReducingTest {
 
     public static void main(String[] args) {
         // 算出所有苹果的重量
-        long sumWeight = apples.stream().collect(reducing(0, Apple::getWeight, (i, j) -> i + j));
+        long sumWeight = apples.stream().map(Apple::getWeight).reduce(0, Integer::sum);
         // 或者 sumWeight = apples.stream().collect(reducing(0, Apple::getWeight, Integer::sum));
         // 或者 sumWeight = apples.stream().map(Apple::getWeight).reduce(Integer::sum).get();
         // 或者(性能最好，也最易读) sumWeight = apples.stream().mapToInt(Apple::getWeight).sum();
         System.out.println(sumWeight);
         // 算出最轻的苹果
-        Optional<Apple> minWeight = apples.stream().collect(reducing((a, b) -> a.getWeight() < b.getWeight() ? a : b));
-        System.out.println(minWeight.get());
+        Optional<Integer> reduce = apples.stream().map(Apple::getWeight).reduce(Integer::min);
+        System.out.println(reduce.get());
     }
 }

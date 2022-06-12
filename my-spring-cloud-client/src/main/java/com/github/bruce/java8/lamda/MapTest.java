@@ -40,7 +40,7 @@ public class MapTest {
         System.out.printf("Original List : %s, Without duplicates : %s %n", numbers, distinct);
 
         // 倒序排列
-        numbers.stream().sorted(Comparator.comparingInt(Integer::intValue)).collect(Collectors.toList()).forEach(System.out::println);
+        numbers.stream().sorted(Comparator.comparingInt(Integer::intValue).reversed()).collect(Collectors.toList()).forEach(System.out::println);
 
         List<Map<String, Object>> list = new ArrayList<>();
         Map<String, Object> a1 = new HashMap<>();
@@ -61,7 +61,7 @@ public class MapTest {
         list.add(b1);
         list.add(b2);
 
-        list.stream().forEach(System.out::println);
+        list.forEach(System.out::println);
         // 按lesson分组，并且version最大的那个
         Object l = list.stream().collect(Collectors.groupingBy(o -> o.get("lesson"), Collectors.maxBy(Comparator.comparingInt(o -> Integer.valueOf(o.get("version").toString())))));
         System.out.println(l);
