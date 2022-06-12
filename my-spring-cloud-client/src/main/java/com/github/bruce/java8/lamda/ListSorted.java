@@ -11,6 +11,9 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.*;
+
+
 public class ListSorted {
     private static void line() {
         System.out.println("-----------------------------------------------------");
@@ -20,22 +23,22 @@ public class ListSorted {
                 new User(1, "Bruce"),
                 new User(5, "John"),
                 new User(3, "Lily"),
-                new User(1, "Bruce"));
+                new User(2, "Bruce"));
         line();
         // 排序
         users.stream().sorted(Comparator.comparingInt(User::getAge)).forEach(System.out::println);
         line();
         // 转成map，name做key，并去重（name一样，选择age小的）
-        Map<String, User> userMap = users.stream().collect(Collectors.toMap(User::getName, Function.identity(),
-                (user1, user2) -> user1.getAge() < user2.getAge() ? user1 : user2));
+        Map<String, User> userMap = users.stream().collect(toMap(User::getName, Function.identity(),
+                (a, b) -> a.getAge() < b.getAge() ? a : b));
         System.out.println(userMap);
         line();
         // 转成map，name做key，并且按name分组
-        Map<String, List<User>> userListMap = users.stream().collect(Collectors.groupingBy(User::getName));
+        Map<String, List<User>> userListMap = users.stream().collect(groupingBy(User::getName, toList()));
         System.out.println(userListMap);
         line();
         // 取年龄最小的那个user
-        System.out.println(users.stream().collect(Collectors.minBy(Comparator.comparingInt(User::getAge))).get());
+        System.out.println(users.stream().min(Comparator.comparingInt(User::getAge)).get());
 
     }
 

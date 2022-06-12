@@ -12,12 +12,13 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         for (int i = 1; i < nums.length; i ++) {
-            int current = nums[i];
-            int j = i;
-            for (; j > 0 && current < nums[j - 1]; j --) {
-                nums[j] = nums[j - 1];
+            for (int j = i; j > 0; j --) {
+                if (nums[j] < nums[j - 1]) {
+                    Sorts.swap(nums, j, j - 1);
+                } else {
+                    break;
+                }
             }
-            nums[j] = current;
         }
         System.out.println(Arrays.toString(nums));
     }

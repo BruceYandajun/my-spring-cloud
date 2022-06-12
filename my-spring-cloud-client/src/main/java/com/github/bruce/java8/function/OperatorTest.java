@@ -14,7 +14,7 @@ public class OperatorTest {
         names.forEach(System.out::println);
 
         List<Integer> values = Arrays.asList(3, 5, 8, 9, 12);
-        int sum = values.stream().reduce(0, (i1, i2) -> i1 + i2);
+        int sum = values.stream().reduce(0, Integer::sum);
         System.out.println(sum);
 
         List<List<Integer>> list = Arrays.asList(Arrays.asList(3, 5), Arrays.asList(4, 7));

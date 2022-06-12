@@ -19,16 +19,16 @@ public class CollectStatisticsTest {
     );
     public static void main(String[] args) {
         // 算出苹果的总数
-        long count = apples.stream().collect(counting()); // 或者 Long count = apples.stream().count();
+        long count = apples.stream().count(); // 或者 Long count = apples.stream().count();
         line("The count of apples is " + count);
         // 算出苹果的总重量
-        long sumWeight = apples.stream().collect(summingInt(Apple::getWeight));
+        long sumWeight = apples.stream().mapToInt(Apple::getWeight).sum();
         line("The total weight of apples is " + sumWeight);
         // 算出苹果的平均重量
         Double averageWeight = apples.stream().collect(averagingInt(Apple::getWeight));
         line("The average weight of apples is " + averageWeight);
         // 获取最重的苹果
-        Optional<Apple> maxWeight = apples.stream().collect(maxBy(Comparator.comparing(Apple::getWeight)));
+        Optional<Apple> maxWeight = apples.stream().max(Comparator.comparing(Apple::getWeight));
         line("The max weight of apples is " + maxWeight.get());
         // 一次性算出所有统计结果
         IntSummaryStatistics statistics = apples.stream().collect(summarizingInt(Apple::getWeight));

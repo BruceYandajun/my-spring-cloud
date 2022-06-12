@@ -63,7 +63,7 @@ public class MapTest {
 
         list.forEach(System.out::println);
         // 按lesson分组，并且version最大的那个
-        Object l = list.stream().collect(Collectors.groupingBy(o -> o.get("lesson"), Collectors.maxBy(Comparator.comparingInt(o -> Integer.valueOf(o.get("version").toString())))));
+        Object l = list.stream().collect(Collectors.groupingBy(o -> o.get("lesson"), Collectors.maxBy(Comparator.comparingInt(o -> Integer.parseInt(o.get("version").toString())))));
         System.out.println(l);
 
         List<List<String>> result = new ArrayList<>();

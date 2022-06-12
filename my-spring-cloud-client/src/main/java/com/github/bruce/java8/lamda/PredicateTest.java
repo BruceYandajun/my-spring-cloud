@@ -36,7 +36,7 @@ public class PredicateTest {
         languages.stream().filter((str) -> str.startsWith("J")).forEach((str) -> System.out.println("Starts with J is " + str));
         languages.stream().filter((str) -> str.endsWith("a")).forEach((str) -> System.out.println("Ends with a is " + str));
         languages.stream().filter((str) -> str.length() > 4).forEach((str) -> System.out.println("Length greater than 4 is " + str));
-        languages.stream().forEach(System.out::println);
+        languages.forEach(System.out::println);
     }
 
     public static void filter(String name, String message, Predicate<String> condition) {

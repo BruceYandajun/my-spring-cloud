@@ -17,7 +17,7 @@ public class CollectJoiningTest {
     );
 
     public static void main(String[] args) {
-        String s = apples.stream().map(Apple::getOwner).collect(joining(","));
+        String s = apples.stream().map(Apple::getOwner).distinct().collect(joining(","));
         System.out.println(s);
     }
 }

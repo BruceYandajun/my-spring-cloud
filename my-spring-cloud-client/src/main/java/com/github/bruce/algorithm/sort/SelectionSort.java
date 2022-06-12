@@ -14,8 +14,8 @@ public class SelectionSort {
     public static void main(String[] args) {
         for (int i = 0; i < nums.length - 1; i ++) {
             for (int j = i + 1; j < nums.length; j ++) {
-                if (nums[j] < nums[i]) {
-                    Sorts.swap(nums, j, i);
+                if (nums[i] > nums[j]) {
+                    Sorts.swap(nums, i, j);
                 }
             }
         }
